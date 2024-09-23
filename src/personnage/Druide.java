@@ -8,6 +8,7 @@ public class Druide {
 	private int effetPotionMin;
 	private int effetPotionMax;
 	private Random random = new Random();
+	private static final int FORCE_MOYENNE = 7;
 	
 	public Druide(String nom, int effetPotionMin, int effetPotionMax) {
 		this.nom = nom;
@@ -20,10 +21,6 @@ public class Druide {
 	public String getNom() {
 		return nom;
 	}
-	
-	public int getForcePotion() {
-		return forcePotion;
-	}
 
 	public void parler(String texte) {
 		System.out.println(prendreParole() + "« " + texte + "»");
@@ -35,7 +32,7 @@ public class Druide {
 
 	public void preparerPotion() {
 		forcePotion = random.nextInt(effetPotionMax - effetPotionMin + 1) + effetPotionMin;
-		if (forcePotion > 7) {
+		if (forcePotion > FORCE_MOYENNE) {
 			parler("J'ai préparé une super potion de force " + forcePotion);
 		} else {
 			parler("Je n'ai pas trouvé tous les ingrédients, ma potion est seulement de force " + forcePotion);
