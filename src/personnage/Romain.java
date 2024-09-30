@@ -5,6 +5,7 @@ public class Romain {
 	private int force;
 
 	public Romain(String nom, int force) {
+		assert isForcePositive(force);
 		this.nom = nom;
 		this.force = force;
 	}
@@ -22,19 +23,40 @@ public class Romain {
 	}
 
 	public void recevoirCoup(int forceCoup) {
+		assert isForcePositive(force);
+		int forceDebut = force;
 		force -= forceCoup;
 		if (force > 0) {
 			parler("Aïe");
 		} else {
 			parler("J'abandonne...");
 		}
+		assert isForceInferieur(forceDebut, force);
 	}
-	
+
+	private Boolean isForcePositive(int force) {
+		if (force > 0) {
+			return true;
+		} else {
+			System.out.println("Force négative");
+			return false;
+		}
+	}
+
+	private Boolean isForceInferieur(int forceDebut, int forceFin) {
+		if (forceDebut - forceFin > 0) {
+			return true;
+		} else {
+			System.out.println("La force n'a pas diminué");
+			return false;
+		}
+	}
+
 	public static void main(String[] args) {
-//		Romain francois = new Romain("François", 3);
-//		System.out.println(francois.prendreParole());
-//		francois.parler("Ciao !");
-//		francois.recevoirCoup(1);
-//		francois.recevoirCoup(30);
+		Romain minus = new Romain("Minus", 6);
+		System.out.println(minus.prendreParole());
+		minus.parler("Ciao !");
+		minus.recevoirCoup(1);
+		minus.recevoirCoup(30);
 	}
 }
