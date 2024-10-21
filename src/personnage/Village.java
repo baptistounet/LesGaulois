@@ -1,7 +1,5 @@
 package personnage;
 
-import java.security.Guard;
-
 public class Village {
 	private String nom;
 	private Chef chef;

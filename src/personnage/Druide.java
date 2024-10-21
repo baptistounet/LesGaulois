@@ -9,7 +9,7 @@ public class Druide {
 	private int effetPotionMax;
 	private Random random = new Random();
 	private static final int FORCE_MOYENNE = 7;
-	
+
 	public Druide(String nom, int effetPotionMin, int effetPotionMax) {
 		this.nom = nom;
 		this.effetPotionMin = effetPotionMin;
@@ -20,6 +20,10 @@ public class Druide {
 
 	public String getNom() {
 		return nom;
+	}
+
+	public int getForcePotion() {
+		return forcePotion;
 	}
 
 	public void parler(String texte) {
@@ -38,7 +42,7 @@ public class Druide {
 			parler("Je n'ai pas trouvé tous les ingrédients, ma potion est seulement de force " + forcePotion);
 		}
 	}
-	
+
 	public void booster(Gaulois gaulois) {
 		String nomGaulois = gaulois.getNom();
 		if (nomGaulois != null && nomGaulois.equals("Obélix")) {
